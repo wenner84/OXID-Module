@@ -1,0 +1,18 @@
+Inhalt aus copy_this in das Root-Verzeichnis des Shop kopieren
+
+folgendes in ../application/views/admin/de/cust_lang.php einfügen
+	'ARTICLE_MAIN_PRICED'         => 'D: ',
+	'ARTICLE_MAIN_PRICEE'         => 'E: ',
+	'ARTICLE_MAIN_PRICEF'         => 'F: ',
+	'ARTICLE_MAIN_PRICEG'         => 'G: ',
+	'ARTICLE_MAIN_PRICEH'         => 'H: ',
+	'ARTICLE_MAIN_PRICEI'         => 'I: ',
+	'ARTICLE_MAIN_PRICEJ'         => 'J: ',
+
+sql.sql über Service=>Tools laden und ausführen
+
+Modul in Erweiterungen=> Modul aktivieren 
+
+Benutzer der Gruppe PreisX zuweisen
+
+PreisX im Artikelstamm einstellen

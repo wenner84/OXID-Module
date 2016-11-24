@@ -1,0 +1,14 @@
+INSERT INTO `oxgroups` (`OXID`, `OXTITLE`) VALUES ('cwpriced', 'Preis D');
+INSERT INTO `oxgroups` (`OXID`, `OXTITLE`) VALUES ('cwpricee', 'Preis E');
+INSERT INTO `oxgroups` (`OXID`, `OXTITLE`) VALUES ('cwpricef', 'Preis F');
+INSERT INTO `oxgroups` (`OXID`, `OXTITLE`) VALUES ('cwpriceg', 'Preis G');
+INSERT INTO `oxgroups` (`OXID`, `OXTITLE`) VALUES ('cwpriceh', 'Preis H');
+INSERT INTO `oxgroups` (`OXID`, `OXTITLE`) VALUES ('cwpricei', 'Preis I');
+INSERT INTO `oxgroups` (`OXID`, `OXTITLE`) VALUES ('cwpricej', 'Preis J');
+ALTER TABLE `oxarticles`  ADD COLUMN `CWPRICED` DOUBLE NOT NULL DEFAULT '0';
+ALTER TABLE `oxarticles`  ADD COLUMN `CWPRICEE` DOUBLE NOT NULL DEFAULT '0';
+ALTER TABLE `oxarticles`  ADD COLUMN `CWPRICEF` DOUBLE NOT NULL DEFAULT '0';
+ALTER TABLE `oxarticles`  ADD COLUMN `CWPRICEG` DOUBLE NOT NULL DEFAULT '0';
+ALTER TABLE `oxarticles`  ADD COLUMN `CWPRICEH` DOUBLE NOT NULL DEFAULT '0';
+ALTER TABLE `oxarticles`  ADD COLUMN `CWPRICEI` DOUBLE NOT NULL DEFAULT '0';
+ALTER TABLE `oxarticles`  ADD COLUMN `CWPRICEJ` DOUBLE NOT NULL DEFAULT '0';
