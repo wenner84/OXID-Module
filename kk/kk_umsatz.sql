@@ -1,0 +1,1 @@
+UPDATE `oxuser`,`ox_bs_kk_umsatz` SET `oxuser`.`mp_kk_b` = `ox_bs_kk_umsatz`.`kkb` WHERE `oxuser`.interne_kdnr = `ox_bs_kk_umsatz`.kdnr

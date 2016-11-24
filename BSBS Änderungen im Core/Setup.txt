@@ -1,0 +1,5 @@
+oxarticle => bs_modules/min_price
+oxcategory => bs_modules/bs_category
+oxdelivery => bs_modules/bs_delivery
+oxUserPayment => bs_modules/bs_userpayment
+oxActionList => bs_modules/bs_actionlist

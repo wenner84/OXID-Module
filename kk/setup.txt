@@ -1,0 +1,116 @@
+1. Copy_this nach root-Verzeichnis des Shops kopieren
+
+2. Eintrag im Backend:
+	Stammdaten => Grundeinstellung => System => Module => "oxbasket => kk/my_kk"
+
+3. in oxid.css einfügen:
+	/*bsbs eingefügt */
+	#body .basket .our {border-bottom:solid; border-bottom-width: 1px; border-top:solid; border-top-width: 1px; border-right:solid; border-right-width: 1px; border-color:#014C83; padding:1em; color:#014C83; text-align:justify;}
+	#body .basket .oul {border: 1px; border-bottom:solid; border-bottom-width: 1px; border-top:solid; border-top-width: 1px; border-left:solid; border-left-width: 1px; border-color:#014C83; padding-top:1em; padding-bottom:1em; padding-left:1em; color:#014C83; text-align:justify;}
+
+
+4. in order.tpl einfügen:
+	<!--bsbs eingefügt KK -->
+		[{if $oxcmp_user->oxuser__mp_kk_b->value == 1}]	
+			[{assign var="karte" value=$oxcmp_user->oxuser__mp_kk_umsatz->value}]
+			[{assign var="ausgabe" value=$oxcmp_basket->kundenkarte($karte)}]
+				<tr class="bsk_sep"><td class="brd"></tr>
+				<tr>
+					<td class="brd"></td>
+					<td class="oul"><img src="[{$oViewConf->getPictureDir()}]service/kk_icon.jpg"> </td>
+					<td colspan="7" class="our">
+						Mit dem heutigen Umsatz werden Sie [{ $ausgabe[2] }] Euro auf Ihrer AWN Bonus-ClubCard haben. <br>
+						Kaufen Sie noch in diesem Jahr f&uuml;r [{ $ausgabe[0] }] Euro bei A.W Niemeyer ein, erhalten Sie [{ $ausgabe[1] }]% von Ihrem Jahresumsatz als Treuebonus in Form eines Gutschein zugesendet.
+					</td>
+					<td></td>
+				</tr>
+		[{/if}]
+	<!-- bsbs ende -->
+	Hinweis: dieser Eintrag passt am besten unter den <tr class="sumrow total"> block 
+
+	
+	Für Mobile diesen Teil einfügen am besten vor <div class="container" id="orderAddress">
+
+	<!--bsbs eingefügt KK mobile-->
+		[{if $oxcmp_user->oxuser__mp_kk_b->value == 1}]	
+			[{assign var="karte" value=$oxcmp_user->oxuser__mp_kk_umsatz->value}]
+			[{assign var="ausgabe" value=$oxcmp_basket->kundenkarte($karte)}]
+			<div class="container">
+				<img src="[{$oViewConf->getPictureDir()}]service/kk_icon.jpg" align="left" >
+				<br> 
+				Mit dem heutigen Umsatz werden Sie [{ $ausgabe[2] }] Euro auf Ihrer AWN Bonus-ClubCard haben. 
+				<br><br>
+				Kaufen Sie noch f&uuml;r [{ $ausgabe[0] }] Euro bei A.W Niemeyer ein, erhalten Sie [{ $ausgabe[1] }]% von Ihrem Jahresumsatz als Treuebonus am Anfang des kommenden Jahres in Form eines Gutschein zugesendet.
+			</div>
+		[{/if}]
+	<!-- bsbs ende -->
+
+
+5. CMS-Seite mit ident=cw_kk als snippet erstellen und folgendes einfürgen:
+	<table width="556">
+	<tr><th colspan="4"><h1 style="text-align: center; color: #000080;">Treuebonus sammeln mit der AWN ClubCard</h1><br></th></tr>
+	<tr>
+	     <td  colspan="2" width="556" height="169" style="text-align: left;line-height: 1.5;">
+	          Riesige Auswahl, bester Service und gute Beratung: Das verspricht Ihnen Ihre AWN-Crew.<br><br>
+                  
+                  Mit der AWN Bonus - ClubCard erhalten Sie bei jedem Einkauf bei uns einen Treuebonus, der  Ihrem Kundenkonto gutgeschrieben wird. Am Jahresanfang des
+                 Folgejahres erhalten Sie einen AWN-Einkaufsgutschein in entsprechender Höhe – und können gleich nach Herzenslust weitershoppen! 
+
+                 Viele Gründe, uns treu zu bleiben!
+	     </td>
+	    <td colspan="2"> <img style="float: right;" src="[{$oViewConf->getPictureDir()}]service/awn_BonusClubCard.jpg"  width="265" height="169" /></td>
+	</tr>
+        <tr><td colspan="4" style="font-size:0.9em"><br>Leider sind aus gesetzlichen Gründen preisgebundene Bücher von den Vergünstigungen der AWN Bonus-ClubCard ausgeschlossen.</td></tr>
+	<tr><td colspan="4">  <br></td></tr>
+	
+	<tr style="text-align: left; color: #000080;">
+	      <td width="100"></td>
+	      <td colspan="3"><b>Die Bonusstaffel für Ihren Jahresumsatz: </b></td>
+	</tr>
+	<tr style="text-align: left; color: #000080;line-height: 3.0;">
+	    <td width="100"></td>
+	    <td><b> 1% für 351 – 550 € </b></td>  
+	    <td><b> 2% für 551 – 1.000 € </b></td>
+	    <td></td>
+	</tr>
+	<tr style="text-align: left; color: #000080;">
+	    <td></td>
+	    <td><b> 3% für 1.001 – 3.000 € </b></td>
+	    <td><b> 5% für über 3.000 € </b></td>
+	    <td></td>
+	</tr>  
+	</table>
+	<br>
+
+
+6. einfügen in /tpl/inc/account_header
+	<!--bsbs eingefügt KK -->
+	     <dl>
+			[{assign var="karte" value=$oxcmp_user->oxuser__mp_kk_umsatz->value}]
+			<dt><a id="test_link_account_recommlist" href="[{oxgetseourl ident=$oViewConf->getSelfLink()|cat:"cl=tpl&amp;tpl=kk_cw.tpl"}]" class="[{if $active_link == 10}]active[{/if}]">[{ oxmultilang ident="KK_CW_TITLE" }]</a></dt>
+		[{if $oxcmp_user->oxuser__mp_kk_b->value == 1}]
+			<dd id="test_link_account_recommlistDesc">Aktueller Umsatz f&uuml;r dieses Jahr [{$karte}] Euro</dd>
+		[{else}]
+			<dd id="test_link_account_recommlistDesc"><a id="test_link_account_recommlist" href="[{oxgetseourl ident=$oViewConf->getSelfLink()|cat:"cl=tpl&amp;tpl=kk_cw.tpl"}]" class="[{if $active_link == 10}]active[{/if}]">Interesse? Dann hier klicken </a></dd>
+		[{/if}]
+	     </dl>
+	<!-- bsbs ende -->
+	
+	Hinweis am besten vor: <dl class="lastInCol">
+
+
+7. einfügen in /tpl/_right.tpl
+	<strong class="h2"><a href="[{oxgetseourl ident=$oViewConf->getSelfLink()|cat:"cl=tpl&amp;tpl=kk_cw.tpl"}]">Die AWN Kundenkarte</a></strong>
+	<div class="box"><br><center>
+		<a href="[{oxgetseourl ident=$oViewConf->getSelfLink()|cat:"cl=tpl&amp;tpl=kk_cw.tpl"}]"><img src="[{$oViewConf->getPictureDir()}]service/kk_werb.jpg" border="0" alt="Kundenkarte"/></a>
+	</center></br></div>
+
+   Um einen Link für die Infoseite der Kundenkarte auf jeder Seite zu haben.
+
+
+8. CMS-Seite Katalog bestellen Box anpassen:
+	<p><a href="[{oxgetseourl ident=$oViewConf->getSelfLink()|cat:"cl=tpl&tpl=hk_cw.tpl"}]"> <img title="AWN" src="[{$oViewConf->getPictureDir()}]service/titel.jpg" alt="AWN Bootszubehör Titel" width="152" height="190" /></a></p>
+	<p align="center"><b>Gratis bestellen <br>
+	<a href="/book/index.html" target="_blank">oder hier online blättern!</a></b></p>
+
+

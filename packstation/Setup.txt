@@ -1,0 +1,11 @@
+1. Copy_this nach root-Verzeichnis des Shops kopieren
+
+2. Eintrag im Backend:
+	Stammdaten => Grundeinstellung => System => Module => "oxinputvalidator => packstation/packstation"
+
+3. cust_lang.php Zeile hinzuf¸gen:
+	'CW_PACK_RE' => 'Bitte geben Sie eine g&uuml;ltige Postanschrift ein. Packstationen sind nur als Lieferanschrift zul&auml;ssig. Dazu geben Sie als Straﬂe "Packstation" und als Hausnummer die Nummer der Packstation ein. Vielen Dank!',
+
+4. oxid.css anpassen
+	/*bsbs n‰chste Zeile color von #555555 auf red ge‰ndert */
+	#body .errorbox{font-size:12px;border:1px solid #555555;color:red; padding: 5px; margin:3px 5px 10px; width:558px; float: left;}

@@ -1,0 +1,17 @@
+1. Inhalt aus copy_this in das Root-Verzeichnis des Shops kopieren
+
+
+2. in newsletter.tpl folgendes erweitern:
+
+	<!-- bsbs modul cw_newsletter -->
+          <tr>
+            <td><label>[{ oxmultilang ident="NEWSLETTER_PLZ" }]&nbsp;&nbsp;</label></td>
+            <td>                
+              <input id="test_newsletterZip" type="text" name="editval[oxuser__oxzip]" size=10 maxlength=10 value="[{if $aRegParams.oxuser__oxzip}][{$aRegParams.oxuser__oxzip}][{/if}]">
+            </td>
+          </tr>
+	<!-- bsbs cw_newsletter ende -->
+
+3. in cust_lang.php
+
+	'NEWSLETTER_PLZ' => 'Plz',
